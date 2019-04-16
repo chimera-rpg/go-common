@@ -27,6 +27,7 @@ type CommandLogin struct {
   Type uint8
   User string
   Pass string
+  Email string
 }
 func (c CommandLogin) GetType() uint32 {
   return TYPE_LOGIN
