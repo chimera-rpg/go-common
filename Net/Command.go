@@ -1,31 +1,41 @@
-package Net
+package net
 
+// Command is our interface for all commands.
 type Command interface {
 	GetType() uint32
 }
 
+// CommandBasic represent very simple transmissions between the server and
+// the client. This is used for disconnects among other things.
 type CommandBasic struct {
 	Type   uint8
 	String string
 }
 
+// GetType returns TYPE_BASIC
 func (c CommandBasic) GetType() uint32 {
 	return TYPE_BASIC
 }
 
+// CommandHandshake represents the handshake between the server and the client
+// so as to ensure compatibility.
 type CommandHandshake struct {
 	Version int
 	Program string
 }
 
+// GetType returns TYPE_HANDSHAKE
 func (c CommandHandshake) GetType() uint32 {
 	return TYPE_HANDSHAKE
 }
 
+// Versioning. This should probably be different.
 const (
 	VERSION = 1
 )
 
+// CommandLogin handles the process of logging in, registering, recovering
+// a password via email, and even deleting the account.
 type CommandLogin struct {
 	Type  uint8
 	User  string
@@ -33,10 +43,12 @@ type CommandLogin struct {
 	Email string
 }
 
+// GetType returns TYPE_LOGIN
 func (c CommandLogin) GetType() uint32 {
 	return TYPE_LOGIN
 }
 
+// These are the CommandLogin Types
 const (
 	QUERY    = 0
 	LOGIN    = 1
@@ -64,6 +76,7 @@ const (
 	QUERY_CLASS                // Queries Class information
 	QUERY_CHARACTER            // Query Character information
 	CREATE_CHARACTER           // Creates a Character
+	ADJUST_CHARACTER           // Adjusts an in-progress Character (race or class)
 	LOAD_CHARACTER             // Loads a character (by name)
 	DELETE_CHARACTER           // Deletes a character (by name)
 	ROLL_ABILITY_SCORES        // Requests(client) or returns(server) rolls for ability scores

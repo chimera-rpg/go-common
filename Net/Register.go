@@ -1,4 +1,4 @@
-package Net
+package net
 
 import (
 	"encoding/gob"
