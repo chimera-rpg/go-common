@@ -1,4 +1,4 @@
-package net
+package network
 
 // Command is our interface for all commands.
 type Command interface {
