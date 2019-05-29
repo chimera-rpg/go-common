@@ -56,15 +56,22 @@ const (
 	Delete
 )
 
+// CommandCharacter is the command involved in resolving:
+//	  * Species, Culture, Training availability
+//			* Image, AbilityScores, Skills, Description
+//		* Querying, selection, creation, and deletion of Player Character(s)
+//			* Species, Culture, Training, Character, Image, Description, AbilityScores, Skills
 type CommandCharacter struct {
-	Type        uint8
-	Race        string // Race used for query
-	Class       string // Class used for query
-	Image       []byte // Image for Race/Class/Character
-	Character   string // Name to be created, loaded, or deleted.
-	Description string // Description used for query
-	Stats       []string
-	Skills      []string
+	Type          uint8
+	Species       []string // Species used for query
+	Culture       []string // Culture used for query
+	Training      []string // Training used for query
+	Image         [][]byte // Image for Species/Culture/Training
+	Character     []string // Name(s) to be created, loaded, or deleted.
+	Level         []uint16 // Level of character.
+	Description   []string // Description used for query
+	AbilityScores [][]string
+	Skills        [][]string
 }
 
 func (c CommandCharacter) GetType() uint32 {
@@ -73,14 +80,13 @@ func (c CommandCharacter) GetType() uint32 {
 
 // These const values provide the sub-types for CommandCharacter
 const (
-	QueryRace         = iota // Queries Race information
-	QueryClass               // Queries Class information
-	QueryCharacter           // Query Character information
-	CreateCharacter          // Creates a Character
-	AdjustCharacter          // Adjusts an in-progress Character (race or class)
-	LoadCharacter            // Loads a character (by name)
-	DeleteCharacter          // Deletes a character (by name)
-	RollAbilityScores        // Requests(client) or returns(server) rolls for ability scores
+	QuerySCT          = iota // Query of Species, Culture, Training, Image, Description, AbilityScores, Skills availability. Sent when client connects.
+	QueryCharacters          // Query of available characters. Sent when client connects.
+	CreateCharacter          // Creates a Character->(name).
+	AdjustCharacter          // Adjusts an in-progress Character Character->(Species, Culture, Training, AbilityScores)
+	ChooseCharacter          // Chooses a character Character->() and logs in.
+	DeleteCharacter          // Deletes a character Character->()
+	RollAbilityScores        // Requests(client) or returns(server) rolls for ability scores Character->(AbilityScores)
 )
 
 /*
