@@ -12,9 +12,9 @@ type CommandBasic struct {
 	String string
 }
 
-// GetType returns TYPE_BASIC
+// GetType returns TypeBasic
 func (c CommandBasic) GetType() uint32 {
-	return TYPE_BASIC
+	return TypeBasic
 }
 
 // CommandHandshake represents the handshake between the server and the client
@@ -24,14 +24,14 @@ type CommandHandshake struct {
 	Program string
 }
 
-// GetType returns TYPE_HANDSHAKE
+// GetType returns TypeHandshake
 func (c CommandHandshake) GetType() uint32 {
-	return TYPE_HANDSHAKE
+	return TypeHandshake
 }
 
 // Versioning. This should probably be different.
 const (
-	VERSION = 1
+	Version = iota
 )
 
 // CommandLogin handles the process of logging in, registering, recovering
@@ -45,15 +45,15 @@ type CommandLogin struct {
 
 // GetType returns TYPE_LOGIN
 func (c CommandLogin) GetType() uint32 {
-	return TYPE_LOGIN
+	return TypeLogin
 }
 
 // These are the CommandLogin Types
 const (
-	QUERY    = 0
-	LOGIN    = 1
-	REGISTER = 2
-	DELETE   = 3
+	Query = iota
+	Login
+	Register
+	Delete
 )
 
 type CommandCharacter struct {
@@ -68,18 +68,19 @@ type CommandCharacter struct {
 }
 
 func (c CommandCharacter) GetType() uint32 {
-	return TYPE_CHARACTER
+	return TypeCharacter
 }
 
+// These const values provide the sub-types for CommandCharacter
 const (
-	QUERY_RACE          = iota // Queries Race information
-	QUERY_CLASS                // Queries Class information
-	QUERY_CHARACTER            // Query Character information
-	CREATE_CHARACTER           // Creates a Character
-	ADJUST_CHARACTER           // Adjusts an in-progress Character (race or class)
-	LOAD_CHARACTER             // Loads a character (by name)
-	DELETE_CHARACTER           // Deletes a character (by name)
-	ROLL_ABILITY_SCORES        // Requests(client) or returns(server) rolls for ability scores
+	QueryRace         = iota // Queries Race information
+	QueryClass               // Queries Class information
+	QueryCharacter           // Query Character information
+	CreateCharacter          // Creates a Character
+	AdjustCharacter          // Adjusts an in-progress Character (race or class)
+	LoadCharacter            // Loads a character (by name)
+	DeleteCharacter          // Deletes a character (by name)
+	RollAbilityScores        // Requests(client) or returns(server) rolls for ability scores
 )
 
 /*
@@ -95,13 +96,13 @@ Client -> Server
     <ANIM_ID>
 */
 const (
-	NOK    = 0
-	OK     = 1
-	ONMAP  = 2
-	SET    = 3
-	GET    = 4
-	REJECT = 5
-	CYA    = 6
+	Nokay = iota
+	Okay
+	OnMap
+	Set
+	Get
+	Reject
+	Cya
 )
 
 type CommandAnimation struct {
@@ -111,11 +112,11 @@ type CommandAnimation struct {
 }
 
 func (c CommandAnimation) GetType() uint32 {
-	return TYPE_ANIMATION
+	return TypeAnimation
 }
 
 const (
-	GRAPHICS_PNG = 1
+	GraphicsPng = iota
 )
 
 type CommandGraphics struct {
@@ -126,11 +127,11 @@ type CommandGraphics struct {
 }
 
 func (c CommandGraphics) GetType() uint32 {
-	return TYPE_GRAPHICS
+	return TypeGraphics
 }
 
 const (
-	TRAVEL = 1
+	Travel = iota
 )
 
 type CommandMap struct {
@@ -141,7 +142,7 @@ type CommandMap struct {
 }
 
 func (c CommandMap) GetType() uint32 {
-	return TYPE_MAP
+	return TypeMap
 }
 
 type CommandObject struct {
@@ -152,16 +153,21 @@ type CommandObject struct {
 }
 
 func (c CommandObject) GetType() uint32 {
-	return TYPE_OBJECT_UPDATE
+	return TypeObjectUpdate
 }
 
 const (
-	NORTH = 0
-	SOUTH = 1
-	EAST  = 2
-	WEST  = 3
-	DROP  = 4
-	QUIT  = 5
+	North = iota
+	South
+	East
+	West
+	Northeast
+	Northwest
+	Southeast
+	Southwest
+	Brace
+	Drop
+	Quit
 )
 
 type CommandCmd struct {
@@ -174,18 +180,18 @@ type CommandExtCmd struct {
 }
 
 const (
-	TYPE_BASIC = iota
-	TYPE_HANDSHAKE
-	TYPE_LOGIN
-	TYPE_CHARACTER
-	TYPE_DATA
-	TYPE_ANIMATION
-	TYPE_AUDIO
-	TYPE_OBJECT_UPDATE
-	TYPE_INVENTORY_UPDATE
-	TYPE_STATUS_UPDATE
-	TYPE_MAP
-	TYPE_CMD
-	TYPE_EXTCMD
-	TYPE_GRAPHICS
+	TypeBasic = iota
+	TypeHandshake
+	TypeLogin
+	TypeCharacter
+	TypeData
+	TypeAnimation
+	TypeAudio
+	TypeObjectUpdate
+	TypeInventoryUpdate
+	TypeStatusUpdate
+	TypeMap
+	TypeCmd
+	TypeExtCmd
+	TypeGraphics
 )

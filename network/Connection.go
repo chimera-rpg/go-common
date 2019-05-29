@@ -60,7 +60,7 @@ func (c *Connection) ReceiveCommandBasic() (b CommandBasic) {
 	case CommandBasic:
 		b = t
 	default:
-		panic(fmt.Errorf("Expected Net.CommandBasic(%d), got: %d\n", TYPE_BASIC, t.GetType()))
+		panic(fmt.Errorf("expected Net.CommandBasic(%d), got: %d", TypeBasic, t.GetType()))
 	}
 	return
 }
@@ -72,7 +72,7 @@ func (c *Connection) ReceiveCommandHandshake() (hs CommandHandshake) {
 	case CommandHandshake:
 		hs = t
 	default:
-		panic(fmt.Errorf("Expected Net.CommandHandshake(%d), got: %d\n", TYPE_BASIC, t.GetType()))
+		panic(fmt.Errorf("expected Net.CommandHandshake(%d), got: %d", TypeBasic, t.GetType()))
 	}
 	return
 }
@@ -86,7 +86,7 @@ func (c *Connection) Close() {
 		log.Print("Closing due to problematic connection.")
 	} else {
 		c.Send(CommandBasic{
-			Type: CYA,
+			Type: Cya,
 		})
 	}
 	c.Conn.Close()
