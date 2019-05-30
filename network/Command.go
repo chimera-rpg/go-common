@@ -63,13 +63,14 @@ const (
 //			* Species, Culture, Training, Character, Image, Description, AbilityScores, Skills
 type CommandCharacter struct {
 	Type          uint8
-	Species       []string // Species used for query
-	Culture       []string // Culture used for query
-	Training      []string // Training used for query
-	Image         [][]byte // Image for Species/Culture/Training
-	Character     []string // Name(s) to be created, loaded, or deleted.
-	Level         []uint16 // Level of character.
-	Description   []string // Description used for query
+	Genera        []string // Genera used for query (humanoids, etc.)
+	Species       []string // Species used for query (dwarf, elf, etc.)
+	Cultures      []string // Cultures used for query (mountain dwarf, etc.)
+	Trainings     []string // Trainings used for query
+	Images        [][]byte // Images for Species/Culture/Training
+	Characters    []string // Name(s) to be created, loaded, or deleted.
+	Levels        []uint16 // Level of character.
+	Descriptions  []string // Description used for query
 	AbilityScores [][]string
 	Skills        [][]string
 }
@@ -80,7 +81,10 @@ func (c CommandCharacter) GetType() uint32 {
 
 // These const values provide the sub-types for CommandCharacter
 const (
-	QuerySCT          = iota // Query of Species, Culture, Training, Image, Description, AbilityScores, Skills availability. Sent when client connects.
+	QueryGenera       = iota // Query of Genera, Image(?), Description. Sent when CreateCharacter.
+	QuerySpecies             // Query of Genera+Species, Image, Description, AbilityScores, Skills
+	QueryCultures            // Query of Genera+Species+Cultures, Image(?), Description, AbilityScores, Skills
+	QueryTrainings           // Query of Genera+Species+Cultures+Trainings, Image(?), Description, Skills
 	QueryCharacters          // Query of available characters. Sent when client connects.
 	CreateCharacter          // Creates a Character->(name).
 	AdjustCharacter          // Adjusts an in-progress Character Character->(Species, Culture, Training, AbilityScores)
