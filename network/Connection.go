@@ -1,6 +1,7 @@
 package network
 
 import (
+	"crypto/tls"
 	"encoding/gob"
 	"fmt"
 	"log"
@@ -30,6 +31,21 @@ func (c *Connection) SetConn(conn net.Conn) {
 
 func (c *Connection) ConnectTo(address string) (err error) {
 	c.Conn, err = net.Dial("tcp", address)
+	if err != nil {
+		return
+	}
+	c.Encoder = gob.NewEncoder(c.Conn)
+	c.Decoder = gob.NewDecoder(c.Conn)
+	c.CmdChan = make(chan Command)
+	c.ClosedChan = make(chan struct{})
+	c.IsConnected = true
+	// I'm unsure if we should start our Command Loop channel coroutine here as it prevents and use of Send/Receive to the owner of the Connection. However, I suspect it is fine, as we should probably just use the LoopCmd 100% of the time when a client is connected to a server.
+	go c.LoopCmd()
+	return
+}
+
+func (c *Connection) SecureConnectTo(address string, conf *tls.Config) (err error) {
+	c.Conn, err = tls.Dial("tcp", address, conf)
 	if err != nil {
 		return
 	}
