@@ -93,18 +93,6 @@ const (
 	RollAbilityScores        // Requests(client) or returns(server) rolls for ability scores Character->(AbilityScores)
 )
 
-/*
-Server -> Client
-  ONMAP
-    <ANIM_ID>
-  SET
-    <ANIM_ID>
-    <DATA_TYPE>
-    <PNG_DATA>
-Client -> Server
-  GET
-    <ANIM_ID>
-*/
 const (
 	Nokay = iota
 	Okay
@@ -116,9 +104,14 @@ const (
 )
 
 type CommandAnimation struct {
-	Type        uint8         // ONMAP->, SET->, ->GET
-	AnimationID int           // Animation ID in question
-	Animations  map[int][]int // Animations[ANIM_GROUP]->GRAPHIC[...]
+	Type        uint8                       // ONMAP->, SET->, ->GET
+	AnimationID uint32                      // Animation ID in question
+	Faces       map[uint32][]AnimationFrame // FaceID to Frames
+}
+
+type AnimationFrame struct {
+	ImageID uint32
+	Time    int
 }
 
 func (c CommandAnimation) GetType() uint32 {
@@ -129,10 +122,11 @@ const (
 	GraphicsPng = iota
 )
 
+// CommandGraphics are for setting and requesting images.
 type CommandGraphics struct {
-	Type       uint8 // SET->, ->GET
-	GraphicsID int   //
-	DataType   uint8 // GRAPHICS_PNG, ...
+	Type       uint8  // SET->, ->GET
+	GraphicsID uint32 //
+	DataType   uint8  // GRAPHICS_PNG, ...
 	Data       []byte
 }
 
@@ -155,15 +149,62 @@ func (c CommandMap) GetType() uint32 {
 	return TypeMap
 }
 
+// ...is it appropriate to use interfaces within gobs as we are below...?
+// CommandObject is the command type used to create, delete, and update objects.
 type CommandObject struct {
-	Type       uint8 // ADD->, REMOVE->, SET->
-	GraphicsID int   //
-	X          int   //
-	Y          int   //
+	Type     uint8  //
+	ObjectID uint32 // id of target object
+	Payload  CommandObjectPayload
 }
 
+// GetType returns TypeObjectUpdate
 func (c CommandObject) GetType() uint32 {
 	return TypeObjectUpdate
+}
+
+// CommandObjectPayload is a generic interface for actual payloads.
+type CommandObjectPayload interface {
+}
+
+// CommandObjectPayloadCreate is the type for creating a new object.
+type CommandObjectPayloadCreate struct {
+	AnimationID uint32
+	FaceID      uint32
+	X, Y, Z     uint32
+}
+
+// CommandObjectPayloadDelete is the type indicating that an object should be deleted.
+type CommandObjectPayloadDelete struct {
+}
+
+// CommandObjectPayloadTravel is the type used for doing interpolated travel from one position to another.
+type CommandObjectPayloadTravel struct {
+	X, Y, Z uint32
+}
+
+// CommandObjectPayloadMove is the type used for doing a strict move from one position to another.
+type CommandObjectPayloadMove struct {
+	X, Y, Z uint32
+}
+
+// CommandObjectPayloadAnimate is the type used for updating an objects animation and face.
+type CommandObjectPayloadAnimate struct {
+	AnimationID uint32 //
+	FaceID      uint32 //
+}
+
+const (
+	ObjectCreate  = iota // used to create an object with given id.
+	ObjectDelete         // used to completely delete given object.
+	ObjectTravel         // used for client-side interpolated movement.
+	ObjectMove           // teleport given object.
+	ObjectAnimate        // whether used to set AnimationID and FaceID.
+)
+
+// CommandCmd is used for player commands to interact with the game world.
+type CommandCmd struct {
+	Cmd  int
+	Args []string
 }
 
 const (
@@ -180,15 +221,13 @@ const (
 	Quit
 )
 
-type CommandCmd struct {
-	Cmd  int
-	Args []string
-}
+// CommandExtCmd is used for extended player commands with variadic inputs.
 type CommandExtCmd struct {
 	Cmd  string
 	Args []string
 }
 
+// A list of all our command types.
 const (
 	TypeBasic = iota
 	TypeHandshake
