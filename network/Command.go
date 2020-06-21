@@ -206,6 +206,11 @@ type CommandCmd struct {
 	Args []string
 }
 
+// GetType returns TypeCmd
+func (c CommandCmd) GetType() uint32 {
+	return TypeCmd
+}
+
 const (
 	North = iota
 	South
@@ -224,6 +229,11 @@ const (
 type CommandExtCmd struct {
 	Cmd  string
 	Args []string
+}
+
+// GetType returns TypeExtCmd
+func (c CommandExtCmd) GetType() uint32 {
+	return TypeExtCmd
 }
 
 // A list of all our command types.
