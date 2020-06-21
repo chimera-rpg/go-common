@@ -141,8 +141,9 @@ const (
 type CommandMap struct {
 	Type   uint8  // TRAVEL
 	Name   string // target map name
-	Width  int
 	Height int
+	Width  int
+	Depth  int
 }
 
 func (c CommandMap) GetType() uint32 {
