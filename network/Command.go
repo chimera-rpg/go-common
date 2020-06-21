@@ -182,24 +182,13 @@ type CommandObjectPayload interface {
 type CommandObjectPayloadCreate struct {
 	AnimationID uint32
 	FaceID      uint32
-	X, Y, Z     uint32
 }
 
 // CommandObjectPayloadDelete is the type indicating that an object should be deleted.
 type CommandObjectPayloadDelete struct {
 }
 
-// CommandObjectPayloadTravel is the type used for doing interpolated travel from one position to another.
-type CommandObjectPayloadTravel struct {
-	X, Y, Z uint32
-}
-
-// CommandObjectPayloadMove is the type used for doing a strict move from one position to another.
-type CommandObjectPayloadMove struct {
-	X, Y, Z uint32
-}
-
-// CommandObjectPayloadAnimate is the type used for updating an objects animation and face.
+// CommandObjectPayloadAnimate is the type used for updating an object's animation and face.
 type CommandObjectPayloadAnimate struct {
 	AnimationID uint32 //
 	FaceID      uint32 //
@@ -208,8 +197,6 @@ type CommandObjectPayloadAnimate struct {
 const (
 	ObjectCreate  = iota // used to create an object with given id.
 	ObjectDelete         // used to completely delete given object.
-	ObjectTravel         // used for client-side interpolated movement.
-	ObjectMove           // teleport given object.
 	ObjectAnimate        // whether used to set AnimationID and FaceID.
 )
 

@@ -16,7 +16,5 @@ func RegisterCommands() {
 	gob.RegisterName("O", CommandObject{})
 	gob.RegisterName("Oc", CommandObjectPayloadCreate{})
 	gob.RegisterName("Od", CommandObjectPayloadDelete{})
-	gob.RegisterName("Ot", CommandObjectPayloadTravel{})
-	gob.RegisterName("Om", CommandObjectPayloadMove{})
 	gob.RegisterName("Oa", CommandObjectPayloadAnimate{})
 }
