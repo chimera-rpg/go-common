@@ -149,6 +149,17 @@ func (c CommandMap) GetType() uint32 {
 	return TypeMap
 }
 
+// CommandTile is a list of tiles at a given Tile. This might be expanded to also have a brightness/visibility value.
+type CommandTile struct {
+	X, Y, Z   uint32
+	ObjectIDs []uint32
+}
+
+// GetType returns TypeTileUpdate
+func (c CommandTile) GetType() uint32 {
+	return TypeTileUpdate
+}
+
 // ...is it appropriate to use interfaces within gobs as we are below...?
 // CommandObject is the command type used to create, delete, and update objects.
 type CommandObject struct {
@@ -236,6 +247,7 @@ const (
 	TypeData
 	TypeAnimation
 	TypeAudio
+	TypeTileUpdate
 	TypeObjectUpdate
 	TypeInventoryUpdate
 	TypeStatusUpdate
