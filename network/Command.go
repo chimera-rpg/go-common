@@ -164,7 +164,6 @@ func (c CommandTile) GetType() uint32 {
 // ...is it appropriate to use interfaces within gobs as we are below...?
 // CommandObject is the command type used to create, delete, and update objects.
 type CommandObject struct {
-	Type     uint8  //
 	ObjectID uint32 // id of target object
 	Payload  CommandObjectPayload
 }
@@ -180,6 +179,7 @@ type CommandObjectPayload interface {
 
 // CommandObjectPayloadCreate is the type for creating a new object.
 type CommandObjectPayloadCreate struct {
+	TypeID      uint8
 	AnimationID uint32
 	FaceID      uint32
 }
