@@ -139,7 +139,8 @@ const (
 )
 
 type CommandMap struct {
-	Type   uint8  // TRAVEL
+	Type   uint8 // TRAVEL
+	MapID  uint32
 	Name   string // target map name
 	Height int
 	Width  int
