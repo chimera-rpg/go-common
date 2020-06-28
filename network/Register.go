@@ -6,6 +6,7 @@ import (
 
 func RegisterCommands() {
 	gob.RegisterName("H", CommandHandshake{})
+	gob.RegisterName("F", CommandFeatures{})
 	gob.RegisterName("B", CommandBasic{})
 	gob.RegisterName("M", CommandMap{})
 	gob.RegisterName("L", CommandLogin{})

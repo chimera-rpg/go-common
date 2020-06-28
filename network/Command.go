@@ -1,5 +1,9 @@
 package network
 
+import (
+	"github.com/chimera-rpg/go-common/data"
+)
+
 // Command is our interface for all commands.
 type Command interface {
 	GetType() uint32
@@ -33,6 +37,16 @@ func (c CommandHandshake) GetType() uint32 {
 const (
 	Version = iota
 )
+
+// CommandFeatures handles the communication of the features of the server, such as animations sizes, to the client.
+type CommandFeatures struct {
+	AnimationsConfig data.AnimationsConfig
+}
+
+// GetType returns TypeFeatures
+func (c CommandFeatures) GetType() uint32 {
+	return TypeFeatures
+}
 
 // CommandLogin handles the process of logging in, registering, recovering
 // a password via email, and even deleting the account.
@@ -241,6 +255,7 @@ func (c CommandExtCmd) GetType() uint32 {
 const (
 	TypeBasic = iota
 	TypeHandshake
+	TypeFeatures
 	TypeLogin
 	TypeCharacter
 	TypeData
