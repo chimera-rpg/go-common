@@ -11,5 +11,5 @@ type AnimationsConfig struct {
 	Adjustments map[ArchetypeType]struct {
 		X int8 `yaml:"X,omitempty"`
 		Y int8 `yaml:"Y,omitempty"`
-	}
+	} `yaml:"Adjustments,omitempty"`
 }
