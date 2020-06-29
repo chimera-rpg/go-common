@@ -194,9 +194,10 @@ type CommandObjectPayload interface {
 
 // CommandObjectPayloadCreate is the type for creating a new object.
 type CommandObjectPayloadCreate struct {
-	TypeID      uint8
-	AnimationID uint32
-	FaceID      uint32
+	TypeID               uint8
+	AnimationID          uint32
+	FaceID               uint32
+	Height, Width, Depth uint8
 }
 
 // CommandObjectPayloadDelete is the type indicating that an object should be deleted.
