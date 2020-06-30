@@ -12,8 +12,7 @@ const (
 	ArchetypePC
 	ArchetypeNPC
 	ArchetypeTile
-	ArchetypeFloor
-	ArchetypeWall
+	ArchetypeBlock
 	ArchetypeItem
 	ArchetypeBullet
 	ArchetypeGeneric
@@ -41,10 +40,8 @@ func (atype *ArchetypeType) UnmarshalYAML(unmarshal func(interface{}) error) err
 		*atype = ArchetypeNPC
 	case "Tile":
 		*atype = ArchetypeTile
-	case "Floor":
-		*atype = ArchetypeFloor
-	case "Wall":
-		*atype = ArchetypeWall
+	case "Block":
+		*atype = ArchetypeBlock
 	case "Item":
 		*atype = ArchetypeItem
 	case "Bullet":
