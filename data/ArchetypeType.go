@@ -6,15 +6,25 @@ import "fmt"
 type ArchetypeType uint8
 
 const (
+	// ArchetypeUnknown represents an unknown archetype.
 	ArchetypeUnknown ArchetypeType = iota
+	// ArchetypeGenus represents a genus archetype.
 	ArchetypeGenus
+	// ArchetypeSpecies represents a species archetype.
 	ArchetypeSpecies
+	// ArchetypePC represents a PC archetype.
 	ArchetypePC
+	// ArchetypeNPC represents an NPC archetype.
 	ArchetypeNPC
+	// ArchetypeTile represents a Tile archetype.
 	ArchetypeTile
+	// ArchetypeBlock represents a Block archetype.
 	ArchetypeBlock
+	// ArchetypeItem represents an Item Archetype.
 	ArchetypeItem
+	// ArchetypeBullet represents a Bullet Archetype.
 	ArchetypeBullet
+	// ArchetypeGeneric represents a Generic Archetype.
 	ArchetypeGeneric
 )
 
