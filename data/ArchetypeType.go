@@ -28,6 +28,12 @@ const (
 	ArchetypeGeneric
 	// ArchetypeSkill represents a Skill Archetype.
 	ArchetypeSkill
+	// ArchetypeArmor represents a Weapon Archetype.
+	ArchetypeArmor
+	// ArchetypeShield represents a Shield Archetype.
+	ArchetypeShield
+	// ArchetypeWeapon represents an Armor Archetype.
+	ArchetypeWeapon
 )
 
 // ArchetypeToStringMap maps ArchetypeTypes to string representations
@@ -43,6 +49,9 @@ var ArchetypeToStringMap = map[ArchetypeType]string{
 	ArchetypeBullet:  "Bullet",
 	ArchetypeGeneric: "Generic",
 	ArchetypeSkill:   "Skill",
+	ArchetypeArmor:   "Armor",
+	ArchetypeShield:  "Shield",
+	ArchetypeWeapon:  "Weapon",
 }
 
 // StringToArchetypeMap maps string representations to ArchetypeTypes.
@@ -58,6 +67,9 @@ var StringToArchetypeMap = map[string]ArchetypeType{
 	"Bullet":  ArchetypeBullet,
 	"Generic": ArchetypeGeneric,
 	"Skill":   ArchetypeSkill,
+	"Armor":   ArchetypeArmor,
+	"Shield":  ArchetypeShield,
+	"Weapon":  ArchetypeWeapon,
 }
 
 // AsUint8 returns ArchetypeType as a uint8.
