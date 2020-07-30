@@ -12,8 +12,10 @@ const (
 	ArchetypeGenus
 	// ArchetypeSpecies represents a species archetype.
 	ArchetypeSpecies
-	// ArchetypeCharacter represents a PC or NPC archetype.
-	ArchetypeCharacter
+	// ArchetypePC represents a PC archetype.
+	ArchetypePC
+	// ArchetypeNPC represents a NPC archetype.
+	ArchetypeNPC
 	// ArchetypeTile represents a Tile archetype.
 	ArchetypeTile
 	// ArchetypeBlock represents a Block archetype.
@@ -36,36 +38,38 @@ const (
 
 // ArchetypeToStringMap maps ArchetypeTypes to string representations
 var ArchetypeToStringMap = map[ArchetypeType]string{
-	ArchetypeUnknown:   "Unknown",
-	ArchetypeGenus:     "Genus",
-	ArchetypeSpecies:   "Species",
-	ArchetypeCharacter: "Character",
-	ArchetypeTile:      "Tile",
-	ArchetypeBlock:     "Block",
-	ArchetypeItem:      "Item",
-	ArchetypeBullet:    "Bullet",
-	ArchetypeGeneric:   "Generic",
-	ArchetypeSkill:     "Skill",
-	ArchetypeArmor:     "Armor",
-	ArchetypeShield:    "Shield",
-	ArchetypeWeapon:    "Weapon",
+	ArchetypeUnknown: "Unknown",
+	ArchetypeGenus:   "Genus",
+	ArchetypeSpecies: "Species",
+	ArchetypePC:      "PC",
+	ArchetypeNPC:     "NPC",
+	ArchetypeTile:    "Tile",
+	ArchetypeBlock:   "Block",
+	ArchetypeItem:    "Item",
+	ArchetypeBullet:  "Bullet",
+	ArchetypeGeneric: "Generic",
+	ArchetypeSkill:   "Skill",
+	ArchetypeArmor:   "Armor",
+	ArchetypeShield:  "Shield",
+	ArchetypeWeapon:  "Weapon",
 }
 
 // StringToArchetypeMap maps string representations to ArchetypeTypes.
 var StringToArchetypeMap = map[string]ArchetypeType{
-	"Unknown":   ArchetypeUnknown,
-	"Genus":     ArchetypeGenus,
-	"Species":   ArchetypeSpecies,
-	"Character": ArchetypeCharacter,
-	"Tile":      ArchetypeTile,
-	"Block":     ArchetypeBlock,
-	"Item":      ArchetypeItem,
-	"Bullet":    ArchetypeBullet,
-	"Generic":   ArchetypeGeneric,
-	"Skill":     ArchetypeSkill,
-	"Armor":     ArchetypeArmor,
-	"Shield":    ArchetypeShield,
-	"Weapon":    ArchetypeWeapon,
+	"Unknown": ArchetypeUnknown,
+	"Genus":   ArchetypeGenus,
+	"Species": ArchetypeSpecies,
+	"PC":      ArchetypePC,
+	"NPC":     ArchetypeNPC,
+	"Tile":    ArchetypeTile,
+	"Block":   ArchetypeBlock,
+	"Item":    ArchetypeItem,
+	"Bullet":  ArchetypeBullet,
+	"Generic": ArchetypeGeneric,
+	"Skill":   ArchetypeSkill,
+	"Armor":   ArchetypeArmor,
+	"Shield":  ArchetypeShield,
+	"Weapon":  ArchetypeWeapon,
 }
 
 // AsUint8 returns ArchetypeType as a uint8.
