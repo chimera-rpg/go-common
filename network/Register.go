@@ -20,4 +20,7 @@ func RegisterCommands() {
 	gob.RegisterName("Oa", CommandObjectPayloadAnimate{})
 	gob.RegisterName("c", CommandCmd{})
 	gob.RegisterName("e", CommandExtCmd{})
+	gob.RegisterName("I", CommandInspect{})
+	gob.RegisterName("Ii", CommandInspectPayloadInventory{})
+	gob.RegisterName("Ic", CommandInspectPayloadCharacter{})
 }

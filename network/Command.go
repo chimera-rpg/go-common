@@ -216,6 +216,33 @@ const (
 	ObjectAnimate        // whether used to set AnimationID and FaceID.
 )
 
+// CommandInspect is used to inspect objects, characters, inventory, and similar.
+type CommandInspect struct {
+	updates []CommandInspectPayload
+}
+
+// GetType returns TypeInspect
+func (c CommandInspect) GetType() uint32 {
+	return TypeInspect
+}
+
+// CommandInspectPayload is our interface for inspection types.
+type CommandInspectPayload interface {
+}
+
+// CommandInpsectPayloadInventory is used to inspect the player's own inventory.
+type CommandInspectPayloadInventory struct {
+	ObjectID uint32
+	Name     string
+	Equipped bool
+}
+
+// CommandInspectPayloadCharacter is used to inspect a character.
+type CommandInspectPayloadCharacter struct {
+	ObjectID uint32
+	Name     string
+}
+
 // CommandCmd is used for player commands to interact with the game world.
 type CommandCmd struct {
 	Cmd  int
@@ -265,6 +292,7 @@ const (
 	TypeTileUpdate
 	TypeObjectUpdate
 	TypeInventoryUpdate
+	TypeInspect
 	TypeStatusUpdate
 	TypeMap
 	TypeCmd
