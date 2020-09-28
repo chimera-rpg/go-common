@@ -8,6 +8,7 @@ import (
 	"net"
 )
 
+// Connection contains all needed information for network connections between clients and servers.
 type Connection struct {
 	IsConnected bool
 	Conn        net.Conn
@@ -17,6 +18,7 @@ type Connection struct {
 	ClosedChan  chan struct{} // Has close(...) called upon it in Close()
 }
 
+// SetConn sets the connection's net.Conn to the passed one.
 func (c *Connection) SetConn(conn net.Conn) {
 	if c.IsConnected == true {
 		c.Close()
@@ -29,6 +31,7 @@ func (c *Connection) SetConn(conn net.Conn) {
 	c.IsConnected = true
 }
 
+// ConnectTo connects to the given address, creating/initializing all basic fields of the Connection.
 func (c *Connection) ConnectTo(address string) (err error) {
 	c.Conn, err = net.Dial("tcp", address)
 	if err != nil {
@@ -44,6 +47,7 @@ func (c *Connection) ConnectTo(address string) (err error) {
 	return
 }
 
+// SecureConnectTo functions as per ConnectTo but with an additional tls.Config argument (and target TLS endpoint).
 func (c *Connection) SecureConnectTo(address string, conf *tls.Config) (err error) {
 	c.Conn, err = tls.Dial("tcp", address, conf)
 	if err != nil {
@@ -59,16 +63,19 @@ func (c *Connection) SecureConnectTo(address string, conf *tls.Config) (err erro
 	return
 }
 
+// Send sends the given Command through the connection.
 func (c *Connection) Send(cmd Command) (err error) {
 	err = c.Encoder.Encode(&cmd)
 	return
 }
 
+// Receive a pending Command from the connection.
 func (c *Connection) Receive(cmd *Command) (err error) {
 	err = c.Decoder.Decode(&cmd)
 	return
 }
 
+// ReceiveCommandBasic receives a basic command.
 func (c *Connection) ReceiveCommandBasic() (b CommandBasic) {
 	var command Command
 	c.Receive(&command)
@@ -81,6 +88,7 @@ func (c *Connection) ReceiveCommandBasic() (b CommandBasic) {
 	return
 }
 
+// ReceiveCommandHandshake receives a handshake command.
 func (c *Connection) ReceiveCommandHandshake() (hs CommandHandshake) {
 	var command Command
 	c.Receive(&command)
@@ -93,6 +101,7 @@ func (c *Connection) ReceiveCommandHandshake() (hs CommandHandshake) {
 	return
 }
 
+// Close closes a given connection. This sends a CommandBasic of Cya.
 func (c *Connection) Close() {
 	if c.IsConnected == false {
 		return
@@ -110,6 +119,7 @@ func (c *Connection) Close() {
 	c.ClosedChan <- blank
 }
 
+// LoopCmd is a loop that receives commands and pumps them into the CmdChan.
 func (c *Connection) LoopCmd() {
 	var cmd Command
 	var err error

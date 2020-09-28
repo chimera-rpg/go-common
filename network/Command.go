@@ -89,6 +89,7 @@ type CommandCharacter struct {
 	Skills        [][]string
 }
 
+// GetType returns TypeCharacter
 func (c CommandCharacter) GetType() uint32 {
 	return TypeCharacter
 }
@@ -107,6 +108,7 @@ const (
 	RollAbilityScores        // Requests(client) or returns(server) rolls for ability scores Character->(AbilityScores)
 )
 
+// Our basic return types
 const (
 	Nokay = iota
 	Okay
@@ -117,21 +119,25 @@ const (
 	Cya
 )
 
+// CommandAnimation is for setting and/or getting animation ID->FaceIDs->Frames
 type CommandAnimation struct {
 	Type        uint8                       // ONMAP->, SET->, ->GET
 	AnimationID uint32                      // Animation ID in question
 	Faces       map[uint32][]AnimationFrame // FaceID to Frames
 }
 
+// AnimationFrame represents an imageID and how long it should play.
 type AnimationFrame struct {
 	ImageID uint32
 	Time    int
 }
 
+// GetType returns TypeAnimation.
 func (c CommandAnimation) GetType() uint32 {
 	return TypeAnimation
 }
 
+// Our Graphics data types.
 const (
 	GraphicsPng = iota
 )
@@ -144,14 +150,17 @@ type CommandGraphics struct {
 	Data       []byte
 }
 
+// GetType returns TypeGraphics.
 func (c CommandGraphics) GetType() uint32 {
 	return TypeGraphics
 }
 
+// Our CommandMap.Type constants.
 const (
 	Travel = iota
 )
 
+// CommandMap is a basic command for creating a map of a given name and ID at provided dimensions.
 type CommandMap struct {
 	Type   uint8 // TRAVEL
 	MapID  uint32
@@ -161,6 +170,7 @@ type CommandMap struct {
 	Depth  int
 }
 
+// GetType returns TypeMap
 func (c CommandMap) GetType() uint32 {
 	return TypeMap
 }
@@ -176,7 +186,6 @@ func (c CommandTile) GetType() uint32 {
 	return TypeTileUpdate
 }
 
-// ...is it appropriate to use interfaces within gobs as we are below...?
 // CommandObject is the command type used to create, delete, and update objects.
 type CommandObject struct {
 	ObjectID uint32 // id of target object
@@ -210,6 +219,7 @@ type CommandObjectPayloadAnimate struct {
 	FaceID      uint32 //
 }
 
+// Our Object types (unused)
 const (
 	ObjectCreate  = iota // used to create an object with given id.
 	ObjectDelete         // used to completely delete given object.
@@ -230,7 +240,7 @@ func (c CommandInspect) GetType() uint32 {
 type CommandInspectPayload interface {
 }
 
-// CommandInpsectPayloadInventory is used to inspect the player's own inventory.
+// CommandInspectPayloadInventory is used to inspect the player's own inventory.
 type CommandInspectPayloadInventory struct {
 	ObjectID uint32
 	Name     string
@@ -254,6 +264,7 @@ func (c CommandCmd) GetType() uint32 {
 	return TypeCmd
 }
 
+// Our various CommandCmd.Cmd values
 const (
 	North = iota
 	South

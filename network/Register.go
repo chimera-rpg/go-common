@@ -4,6 +4,7 @@ import (
 	"encoding/gob"
 )
 
+// RegisterCommands registers our various Command structures with their gob names.
 func RegisterCommands() {
 	gob.RegisterName("H", CommandHandshake{})
 	gob.RegisterName("F", CommandFeatures{})
