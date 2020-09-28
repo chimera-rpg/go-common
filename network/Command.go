@@ -219,11 +219,16 @@ type CommandObjectPayloadAnimate struct {
 	FaceID      uint32 //
 }
 
+// CommandObjectPayloadViewTarget is the type used for marking a given object as the client's view target.
+type CommandObjectPayloadViewTarget struct {
+}
+
 // Our Object types (unused)
 const (
-	ObjectCreate  = iota // used to create an object with given id.
-	ObjectDelete         // used to completely delete given object.
-	ObjectAnimate        // whether used to set AnimationID and FaceID.
+	ObjectCreate     = iota // used to create an object with given id.
+	ObjectDelete            // used to completely delete given object.
+	ObjectAnimate           // whether used to set AnimationID and FaceID.
+	ObjectViewTarget        // used to target the object as the client's view.
 )
 
 // CommandInspect is used to inspect objects, characters, inventory, and similar.
