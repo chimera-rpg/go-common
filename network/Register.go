@@ -22,7 +22,7 @@ func RegisterCommands() {
 	gob.RegisterName("Ov", CommandObjectPayloadViewTarget{})
 	gob.RegisterName("c", CommandCmd{})
 	gob.RegisterName("e", CommandExtCmd{})
-	gob.RegisterName("M", CommandMessage{})
+	gob.RegisterName("m", CommandMessage{})
 	gob.RegisterName("I", CommandInspect{})
 	gob.RegisterName("Ii", CommandInspectPayloadInventory{})
 	gob.RegisterName("Ic", CommandInspectPayloadCharacter{})
