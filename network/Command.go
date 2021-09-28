@@ -295,6 +295,31 @@ func (c CommandExtCmd) GetType() uint32 {
 	return TypeExtCmd
 }
 
+// Our CommandMessage.Type values
+const (
+	ServerMessage = iota
+	MapMessage
+	PCMessage
+	NPCMessage
+	PartyMessage
+	GuildMessage
+	ChatMessage
+)
+
+// CommandMessage is used for most forms of messaging.
+type CommandMessage struct {
+	Type         int    // Message type, representing the context of the message.
+	From         string // From, if it matters
+	FromObjectID uint32 // For NPC messaging.
+	Title        string // Title of the message. Optional.
+	Body         string // Body of the message.
+}
+
+// GetType returns TypeMessage
+func (c CommandMessage) GetType() uint32 {
+	return TypeMessage
+}
+
 // A list of all our command types.
 const (
 	TypeBasic = iota
@@ -314,4 +339,5 @@ const (
 	TypeCmd
 	TypeExtCmd
 	TypeGraphics
+	TypeMessage
 )
