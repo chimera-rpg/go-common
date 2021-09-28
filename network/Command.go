@@ -48,6 +48,16 @@ func (c CommandFeatures) GetType() uint32 {
 	return TypeFeatures
 }
 
+// CommandViewport requests a specific viewport size from the server. This mainly intended for small displays that can't see as much data as they can receive.
+type CommandViewport struct {
+	Height, Width, Depth uint8
+}
+
+// GetType returns TypeViewport
+func (c CommandViewport) GetType() uint32 {
+	return TypeViewport
+}
+
 // CommandLogin handles the process of logging in, registering, recovering
 // a password via email, and even deleting the account.
 type CommandLogin struct {
@@ -340,4 +350,5 @@ const (
 	TypeExtCmd
 	TypeGraphics
 	TypeMessage
+	TypeViewport
 )

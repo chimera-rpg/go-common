@@ -26,4 +26,5 @@ func RegisterCommands() {
 	gob.RegisterName("I", CommandInspect{})
 	gob.RegisterName("Ii", CommandInspectPayloadInventory{})
 	gob.RegisterName("Ic", CommandInspectPayloadCharacter{})
+	gob.RegisterName("Vp", CommandViewport{})
 }
