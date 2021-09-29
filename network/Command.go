@@ -140,6 +140,7 @@ type CommandAnimation struct {
 type AnimationFrame struct {
 	ImageID uint32
 	Time    int
+	Y, X    int8 // Allow X a Y adjustments from -128 to 128
 }
 
 // GetType returns TypeAnimation.
