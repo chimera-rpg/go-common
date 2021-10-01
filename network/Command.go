@@ -315,6 +315,7 @@ const (
 	PartyMessage
 	GuildMessage
 	ChatMessage
+	LocalMessage // Client-side only messaging
 )
 
 // CommandMessage is used for most forms of messaging.
