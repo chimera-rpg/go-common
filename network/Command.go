@@ -310,6 +310,7 @@ func (c CommandExtCmd) GetType() uint32 {
 const (
 	ServerMessage = iota
 	MapMessage
+	TargetMessage // Message for the client's target (their character).
 	PCMessage
 	NPCMessage
 	PartyMessage
