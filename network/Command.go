@@ -333,6 +333,17 @@ func (c CommandMessage) GetType() uint32 {
 	return TypeMessage
 }
 
+// CommandStatus is used to notify the client of status effects as well as to let the server know we want to add/remove particular status effects.
+type CommandStatus struct {
+	Name   string // Name of the status.
+	Active bool   // If it is (or desired to be) active or not.
+}
+
+// GetType returns TypeStatus
+func (c CommandStatus) GetType() uint32 {
+	return TypeStatus
+}
+
 // A list of all our command types.
 const (
 	TypeBasic = iota
@@ -347,7 +358,7 @@ const (
 	TypeObjectUpdate
 	TypeInventoryUpdate
 	TypeInspect
-	TypeStatusUpdate
+	TypeStatus
 	TypeMap
 	TypeCmd
 	TypeExtCmd
