@@ -23,6 +23,7 @@ func RegisterCommands() {
 	gob.RegisterName("c", CommandCmd{})
 	gob.RegisterName("e", CommandExtCmd{})
 	gob.RegisterName("m", CommandMessage{})
+	gob.RegisterName("s", CommandStatus{})
 	gob.RegisterName("I", CommandInspect{})
 	gob.RegisterName("Ii", CommandInspectPayloadInventory{})
 	gob.RegisterName("Ic", CommandInspectPayloadCharacter{})
