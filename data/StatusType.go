@@ -3,23 +3,24 @@ package data
 // StatusType represents various Status effects.
 type StatusType uint8
 
+// Our various status types.
+const (
+	NoStatus                 = 0
+	FallingStatus StatusType = 1 << iota
+	SqueezingStatus
+	CrouchingStatus
+)
+
 // StringToStatusMap is as the name implies.
 var StringToStatusMap = map[string]StatusType{
-	"Falling":   Falling,
-	"Squeezing": Squeezing,
-	"Crouching": Crouching,
+	"Falling":   FallingStatus,
+	"Squeezing": SqueezingStatus,
+	"Crouching": CrouchingStatus,
 }
 
 // StatusMapToString is as the name implies.
 var StatusMapToString = map[StatusType]string{
-	Falling:   "Falling",
-	Squeezing: "Squeezing",
-	Crouching: "Crouching",
+	FallingStatus:   "Falling",
+	SqueezingStatus: "Squeezing",
+	CrouchingStatus: "Crouching",
 }
-
-// Our various status types.
-const (
-	Falling StatusType = 0 << iota
-	Squeezing
-	Crouching
-)
