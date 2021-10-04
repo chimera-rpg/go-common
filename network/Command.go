@@ -335,8 +335,8 @@ func (c CommandMessage) GetType() uint32 {
 
 // CommandStatus is used to notify the client of status effects as well as to let the server know we want to add/remove particular status effects.
 type CommandStatus struct {
-	Type   StatusType // StatusType.
-	Active bool       // If it is (or desired to be) active or not.
+	Type   data.StatusType // StatusType.
+	Active bool            // If it is (or desired to be) active or not.
 }
 
 // GetType returns TypeStatus
