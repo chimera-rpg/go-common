@@ -292,6 +292,14 @@ const (
 	Northwest
 	Southeast
 	Southwest
+	RunNorth
+	RunSouth
+	RunEast
+	RunWest
+	RunNortheast
+	RunNorthwest
+	RunSoutheast
+	RunSouthwest
 	Brace
 	Drop
 	Quit
