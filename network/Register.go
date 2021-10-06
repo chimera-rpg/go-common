@@ -24,6 +24,7 @@ func RegisterCommands() {
 	gob.RegisterName("e", CommandExtCmd{})
 	gob.RegisterName("m", CommandMessage{})
 	gob.RegisterName("s", CommandStatus{})
+	gob.RegisterName("S", CommandStamina{})
 	gob.RegisterName("I", CommandInspect{})
 	gob.RegisterName("Ii", CommandInspectPayloadInventory{})
 	gob.RegisterName("Ic", CommandInspectPayloadCharacter{})

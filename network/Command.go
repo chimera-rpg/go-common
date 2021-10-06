@@ -344,6 +344,17 @@ func (c CommandStatus) GetType() uint32 {
 	return TypeStatus
 }
 
+// CommandStamina is used to notify the client of changes in its target's stamina.
+type CommandStamina struct {
+	Stamina    int64
+	MaxStamina int64
+}
+
+// GetType returns TypeStamina
+func (c CommandStamina) GetType() uint32 {
+	return TypeStamina
+}
+
 // A list of all our command types.
 const (
 	TypeBasic = iota
@@ -365,4 +376,5 @@ const (
 	TypeGraphics
 	TypeMessage
 	TypeViewport
+	TypeStamina
 )
