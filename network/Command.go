@@ -1,6 +1,8 @@
 package network
 
 import (
+	"time"
+
 	"github.com/chimera-rpg/go-common/data"
 )
 
@@ -346,8 +348,8 @@ func (c CommandStatus) GetType() uint32 {
 
 // CommandStamina is used to notify the client of changes in its target's stamina.
 type CommandStamina struct {
-	Stamina    int64
-	MaxStamina int64
+	Stamina    time.Duration
+	MaxStamina time.Duration
 }
 
 // GetType returns TypeStamina
