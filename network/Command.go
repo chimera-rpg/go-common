@@ -318,13 +318,13 @@ func (c CommandExtCmd) GetType() uint32 {
 
 // CommandRepeatCmd is used to send repeating versions of the above CommandCmds.
 type CommandRepeatCmd struct {
-	Cmd int
+	Cmd    int
 	Cancel bool // If the action should be canceled (used for canceling the repeat)
-	Args []string
+	Args   []string
 }
 
 // GetType returns TypeRepeatCmd
-func (c CommandRepeatCmd) struct {
+func (c CommandRepeatCmd) GetType() uint32 {
 	return TypeRepeatCmd
 }
 
