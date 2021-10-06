@@ -316,6 +316,18 @@ func (c CommandExtCmd) GetType() uint32 {
 	return TypeExtCmd
 }
 
+// CommandRepeatCmd is used to send repeating versions of the above CommandCmds.
+type CommandRepeatCmd struct {
+	Cmd int
+	Cancel bool // If the action should be canceled (used for canceling the repeat)
+	Args []string
+}
+
+// GetType returns TypeRepeatCmd
+func (c CommandRepeatCmd) struct {
+	return TypeRepeatCmd
+}
+
 // Our CommandMessage.Type values
 const (
 	ServerMessage = iota
@@ -383,6 +395,7 @@ const (
 	TypeMap
 	TypeCmd
 	TypeExtCmd
+	TypeRepeatCmd
 	TypeGraphics
 	TypeMessage
 	TypeViewport
