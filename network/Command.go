@@ -305,6 +305,14 @@ const (
 	Quit
 )
 
+// CommandClearCmd is used to clear the enter command queue.
+type CommandClearCmd struct{}
+
+// GetType returns TypeClearCmd
+func (c CommandClearCmd) GetType() uint32 {
+	return TypeClearCmd
+}
+
 // CommandExtCmd is used for extended player commands with variadic inputs.
 type CommandExtCmd struct {
 	Cmd  string
@@ -394,6 +402,7 @@ const (
 	TypeStatus
 	TypeMap
 	TypeCmd
+	TypeClearCmd
 	TypeExtCmd
 	TypeRepeatCmd
 	TypeGraphics
