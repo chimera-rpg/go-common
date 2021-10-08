@@ -363,6 +363,26 @@ func (c CommandMessage) GetType() uint32 {
 	return TypeMessage
 }
 
+// Our CommandSound values
+const (
+	GenericSound = iota
+	MapSound
+	ObjectSound
+)
+
+// CommandSound is used for sounds and the on-screen representation of them. FIXME: Will be rolled into a system like CommandAnimation, wherein a sound ID will map to a Text & Audio.
+type CommandSound struct {
+	Type     int
+	SoundID  int    // The sound ID that should be played.
+	Text     string // Text representation of the sound.
+	ObjectID uint32 // ObjectID, for sounds eminating from an object.
+	X, Y, Z  uint32 // The origin of the sound, if not part of an ObjectID.
+}
+
+func (c CommandSound) GetType() uint32 {
+	return TypeSound
+}
+
 // CommandStatus is used to notify the client of status effects as well as to let the server know we want to add/remove particular status effects.
 type CommandStatus struct {
 	Type   data.StatusType // StatusType.
@@ -409,4 +429,5 @@ const (
 	TypeMessage
 	TypeViewport
 	TypeStamina
+	TypeSound
 )
