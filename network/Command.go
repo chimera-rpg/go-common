@@ -189,6 +189,7 @@ type AudioSound struct {
 // Our Audio data types.
 const (
 	SoundOgg = iota
+	SoundFlac
 )
 
 // CommandSound is for setting and requesting sound files.
