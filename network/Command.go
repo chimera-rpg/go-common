@@ -168,6 +168,42 @@ func (c CommandGraphics) GetType() uint32 {
 	return TypeGraphics
 }
 
+// CommandAudio is for setting and/or getting audio ID->SoundIDs->Sounds
+type CommandAudio struct {
+	Type    uint8
+	AudioID uint32
+	Sounds  map[uint32][]AudioSound
+}
+
+// GetType returns TypeAudio
+func (c CommandAudio) GetType() uint32 {
+	return TypeAudio
+}
+
+// AudioSound contains a soundID and its text representation.
+type AudioSound struct {
+	SoundID uint32
+	Text    string
+}
+
+// Our Audio data types.
+const (
+	SoundOgg = iota
+)
+
+// CommandSound is for setting and requesting sound files.
+type CommandSound struct {
+	Type     uint8
+	SoundID  uint32
+	DataType uint8 // SoundOgg, ...
+	Data     []byte
+}
+
+// GetType returns TypeAudio.
+func (c CommandSound) GetType() uint32 {
+	return TypeSound
+}
+
 // Our CommandMap.Type constants.
 const (
 	Travel = iota
@@ -363,24 +399,25 @@ func (c CommandMessage) GetType() uint32 {
 	return TypeMessage
 }
 
-// Our CommandSound values
+// Our CommandNoise values
 const (
-	GenericSound = iota
-	MapSound
-	ObjectSound
+	GenericNoise = iota
+	MapNoise
+	ObjectNoise
 )
 
-// CommandSound is used for sounds and the on-screen representation of them. FIXME: Will be rolled into a system like CommandAnimation, wherein a sound ID will map to a Text & Audio.
-type CommandSound struct {
+// CommandNoise is used for playing sounds and showing the on-screen representation of them.
+type CommandNoise struct {
 	Type     int
-	SoundID  int    // The sound ID that should be played.
-	Text     string // Text representation of the sound.
+	AudioID  uint32 // The audio ID to be played.
+	SoundID  uint32 // The specific sound ID that should be played.
 	ObjectID uint32 // ObjectID, for sounds eminating from an object.
 	X, Y, Z  uint32 // The origin of the sound, if not part of an ObjectID.
 }
 
-func (c CommandSound) GetType() uint32 {
-	return TypeSound
+// GetType returns TypeNoise
+func (c CommandNoise) GetType() uint32 {
+	return TypeNoise
 }
 
 // CommandStatus is used to notify the client of status effects as well as to let the server know we want to add/remove particular status effects.
@@ -413,8 +450,6 @@ const (
 	TypeLogin
 	TypeCharacter
 	TypeData
-	TypeAnimation
-	TypeAudio
 	TypeTileUpdate
 	TypeObjectUpdate
 	TypeInventoryUpdate
@@ -425,9 +460,15 @@ const (
 	TypeClearCmd
 	TypeExtCmd
 	TypeRepeatCmd
-	TypeGraphics
 	TypeMessage
 	TypeViewport
 	TypeStamina
+	// Graphics-related
+	TypeGraphics
+	TypeAnimation
+
+	// Audio-related
+	TypeAudio
 	TypeSound
+	TypeNoise
 )

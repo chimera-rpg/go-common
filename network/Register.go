@@ -32,4 +32,6 @@ func RegisterCommands() {
 	gob.RegisterName("Ic", CommandInspectPayloadCharacter{})
 	gob.RegisterName("Vp", CommandViewport{})
 	gob.RegisterName("S", CommandSound{})
+	gob.RegisterName("a", CommandAudio{})
+	gob.RegisterName("n", CommandNoise{})
 }
