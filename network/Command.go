@@ -410,10 +410,11 @@ const (
 // CommandNoise is used for playing sounds and showing the on-screen representation of them.
 type CommandNoise struct {
 	Type     int
-	AudioID  uint32 // The audio ID to be played.
-	SoundID  uint32 // The specific sound ID that should be played.
-	ObjectID uint32 // ObjectID, for sounds eminating from an object.
-	X, Y, Z  uint32 // The origin of the sound, if not part of an ObjectID.
+	AudioID  uint32  // The audio ID to be played.
+	SoundID  uint32  // The specific sound ID that should be played.
+	ObjectID uint32  // ObjectID, for sounds eminating from an object.
+	X, Y, Z  uint32  // The origin of the sound, if not part of an ObjectID.
+	Volume   float32 // The volume, from 0 to 1.
 }
 
 // GetType returns TypeNoise
