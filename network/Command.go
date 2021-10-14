@@ -424,11 +424,14 @@ func (c CommandNoise) GetType() uint32 {
 
 // CommandMusic is used for playing music.
 type CommandMusic struct {
-	Type    int
-	AudioID uint32  // The audio ID to be played.
-	SoundID uint32  // The specific sound ID that should be played.
-	X, Y, Z uint32  // The origin of the music.
-	Volume  float32 // The volume, from 0 to 1.
+	Type     int
+	AudioID  uint32  // The audio ID to be played.
+	SoundID  uint32  // The specific sound ID that should be played.
+	ObjectID uint32  // ObjectID, for music eminating from an object.
+	X, Y, Z  uint32  // The origin of the music.
+	Volume   float32 // The volume, from 0 to 1.
+	Loop     int8    // The loop count, -1 being infinite.
+	Stop     bool    // If the music should be stoppped.
 }
 
 // GetType returns TypeMusic
