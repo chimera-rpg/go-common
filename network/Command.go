@@ -422,6 +422,20 @@ func (c CommandNoise) GetType() uint32 {
 	return TypeNoise
 }
 
+// CommandMusic is used for playing music.
+type CommandMusic struct {
+	Type    int
+	AudioID uint32  // The audio ID to be played.
+	SoundID uint32  // The specific sound ID that should be played.
+	X, Y, Z uint32  // The origin of the music.
+	Volume  float32 // The volume, from 0 to 1.
+}
+
+// GetType returns TypeMusic
+func (c CommandMusic) GetType() uint32 {
+	return TypeMusic
+}
+
 // CommandStatus is used to notify the client of status effects as well as to let the server know we want to add/remove particular status effects.
 type CommandStatus struct {
 	Type   data.StatusType // StatusType.
@@ -473,4 +487,5 @@ const (
 	TypeAudio
 	TypeSound
 	TypeNoise
+	TypeMusic
 )
