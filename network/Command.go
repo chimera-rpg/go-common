@@ -257,6 +257,7 @@ type CommandObjectPayloadCreate struct {
 	AnimationID          uint32
 	FaceID               uint32
 	Height, Width, Depth uint8
+	Opaque               bool
 }
 
 // CommandObjectPayloadDelete is the type indicating that an object should be deleted.
