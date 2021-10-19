@@ -1,7 +1,7 @@
 package data
 
 // MatterType represents the given matter state of an object.
-type MatterType uint8
+type MatterType uint16
 
 // StringToMatterMap maps string representations to MatterTypes.
 var StringToMatterMap = map[string]MatterType{
@@ -13,6 +13,7 @@ var StringToMatterMap = map[string]MatterType{
 	"Physical": PhysicalMatter,
 	"Spirit":   SpiritMatter,
 	"Arcane":   ArcaneMatter,
+	"Opaque":   OpaqueMatter,
 }
 
 const (
@@ -32,6 +33,8 @@ const (
 	SpiritMatter
 	// ArcaneMatter represents all matter states in the arcane world.
 	ArcaneMatter
+	// OpaqueMatter represents if the matter blocks vision.
+	OpaqueMatter
 )
 
 // UnmarshalYAML unmarshals an MatterType from a string.
@@ -71,6 +74,9 @@ func (m MatterType) MarshalYAML() (interface{}, error) {
 	}
 	if m.Is(ArcaneMatter) {
 		out = append(out, "Arcane")
+	}
+	if m.Is(OpaqueMatter) {
+		out = append(out, "Opaque")
 	}
 	return out, nil
 }
