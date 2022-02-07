@@ -82,6 +82,6 @@ func (m MatterType) MarshalYAML() (interface{}, error) {
 }
 
 // Is returns whether one MatterType contains the types of another MatterType.
-func (m *MatterType) Is(o MatterType) bool {
-	return *m&o != 0
+func (m MatterType) Is(o MatterType) bool {
+	return m&o != 0
 }
