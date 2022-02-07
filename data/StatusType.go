@@ -10,6 +10,9 @@ const (
 	SqueezingStatus
 	CrouchingStatus
 	RunningStatus
+	SwimmingStatus
+	FlyingStatus
+	FloatingStatus
 )
 
 // StringToStatusMap is as the name implies.
@@ -18,6 +21,9 @@ var StringToStatusMap = map[string]StatusType{
 	"Squeezing": SqueezingStatus,
 	"Crouching": CrouchingStatus,
 	"Running":   RunningStatus,
+	"Swimming":  SwimmingStatus,
+	"Flying":    FlyingStatus,
+	"Floating":  FloatingStatus,
 }
 
 // StatusMapToString is as the name implies.
@@ -26,4 +32,7 @@ var StatusMapToString = map[StatusType]string{
 	SqueezingStatus: "Squeezing",
 	CrouchingStatus: "Crouching",
 	RunningStatus:   "Running",
+	SwimmingStatus:  "Swimming",
+	FlyingStatus:    "Flying",
+	FloatingStatus:  "Floating",
 }
