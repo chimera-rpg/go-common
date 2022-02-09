@@ -341,6 +341,7 @@ const (
 	Brace
 	Drop
 	Quit
+	Wizard
 )
 
 // CommandClearCmd is used to clear the enter command queue.
