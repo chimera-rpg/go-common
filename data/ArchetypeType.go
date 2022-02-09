@@ -38,6 +38,8 @@ const (
 	ArchetypeFood
 	// ArchetypeAudio represents a special archetype for sound and music playback.
 	ArchetypeAudio
+	// ArchetypeFlora represents general non-animal, non-PC, and non-NPC life.
+	ArchetypeFlora
 )
 
 // ArchetypeToStringMap maps ArchetypeTypes to string representations
@@ -58,6 +60,7 @@ var ArchetypeToStringMap = map[ArchetypeType]string{
 	ArchetypeWeapon:  "Weapon",
 	ArchetypeFood:    "Food",
 	ArchetypeAudio:   "Audio",
+	ArchetypeFlora:   "Flora",
 }
 
 // StringToArchetypeMap maps string representations to ArchetypeTypes.
@@ -78,6 +81,7 @@ var StringToArchetypeMap = map[string]ArchetypeType{
 	"Weapon":  ArchetypeWeapon,
 	"Food":    ArchetypeFood,
 	"Audio":   ArchetypeAudio,
+	"Flora":   ArchetypeFlora,
 }
 
 // AsUint8 returns ArchetypeType as a uint8.
@@ -96,7 +100,7 @@ func (atype *ArchetypeType) UnmarshalYAML(unmarshal func(interface{}) error) err
 		return nil
 	}
 	*atype = ArchetypeUnknown
-	return fmt.Errorf("Unknown Type '%s'", value)
+	return fmt.Errorf("unknown Type '%s'", value)
 }
 
 // MarshalYAML marshals an ArchetypeType into a string.
