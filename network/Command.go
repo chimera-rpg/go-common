@@ -136,6 +136,7 @@ type CommandAnimation struct {
 	Type        uint8                       // ONMAP->, SET->, ->GET
 	AnimationID uint32                      // Animation ID in question
 	Faces       map[uint32][]AnimationFrame // FaceID to Frames
+	RandomFrame bool                        // Whether to start the animation at a random frame.
 }
 
 // AnimationFrame represents an imageID and how long it should play.
