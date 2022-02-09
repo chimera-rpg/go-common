@@ -1,7 +1,7 @@
 package data
 
 // StatusType represents various Status effects.
-type StatusType uint8
+type StatusType uint16
 
 // Our various status types.
 const (
@@ -13,6 +13,7 @@ const (
 	SwimmingStatus
 	FlyingStatus
 	FloatingStatus
+	WizardStatus
 )
 
 // StringToStatusMap is as the name implies.
@@ -24,6 +25,7 @@ var StringToStatusMap = map[string]StatusType{
 	"Swimming":  SwimmingStatus,
 	"Flying":    FlyingStatus,
 	"Floating":  FloatingStatus,
+	"Wizard":    WizardStatus,
 }
 
 // StatusMapToString is as the name implies.
@@ -35,4 +37,5 @@ var StatusMapToString = map[StatusType]string{
 	SwimmingStatus:  "Swimming",
 	FlyingStatus:    "Flying",
 	FloatingStatus:  "Floating",
+	WizardStatus:    "Wizard",
 }
