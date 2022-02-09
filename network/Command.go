@@ -338,6 +338,10 @@ const (
 	RunNorthwest
 	RunSoutheast
 	RunSouthwest
+	Up
+	Down
+	RunUp
+	RunDown
 	Brace
 	Drop
 	Quit
