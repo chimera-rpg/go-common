@@ -85,3 +85,14 @@ func (m MatterType) MarshalYAML() (interface{}, error) {
 func (m MatterType) Is(o MatterType) bool {
 	return m&o != 0
 }
+
+// Strings returns a slice of strings containing the matter's type strings.
+func (m MatterType) Strings() (s []string) {
+	if i, err := m.MarshalYAML(); err == nil {
+		switch v := i.(type) {
+		case []string:
+			return v
+		}
+	}
+	return
+}
