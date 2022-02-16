@@ -40,6 +40,8 @@ const (
 	ArchetypeAudio
 	// ArchetypeFlora represents general non-animal, non-PC, and non-NPC life.
 	ArchetypeFlora
+	// ArchetypeExit represents exits and entrances between and within maps.
+	ArchetypeExit
 )
 
 // ArchetypeToStringMap maps ArchetypeTypes to string representations
@@ -61,6 +63,7 @@ var ArchetypeToStringMap = map[ArchetypeType]string{
 	ArchetypeFood:    "Food",
 	ArchetypeAudio:   "Audio",
 	ArchetypeFlora:   "Flora",
+	ArchetypeExit:    "Exit",
 }
 
 // StringToArchetypeMap maps string representations to ArchetypeTypes.
@@ -82,6 +85,7 @@ var StringToArchetypeMap = map[string]ArchetypeType{
 	"Food":    ArchetypeFood,
 	"Audio":   ArchetypeAudio,
 	"Flora":   ArchetypeFlora,
+	"Exit":    ArchetypeExit,
 }
 
 // AsUint8 returns ArchetypeType as a uint8.
