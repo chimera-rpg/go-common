@@ -468,6 +468,13 @@ func (c CommandStamina) GetType() uint32 {
 	return TypeStamina
 }
 
+// CommandAttack is used to send an attack character action.
+type CommandAttack struct {
+	Direction int    // Direction of the attack. Used with direction melee swings.
+	Y, X, Z   uint32 // Specific Y, X, Z to target. Used with targeted range.
+	Target    uint32 // Object ID to target.
+}
+
 // A list of all our command types.
 const (
 	TypeBasic = iota

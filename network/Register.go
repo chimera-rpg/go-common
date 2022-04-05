@@ -35,4 +35,5 @@ func RegisterCommands() {
 	gob.RegisterName("a", CommandAudio{})
 	gob.RegisterName("n", CommandNoise{})
 	gob.RegisterName("Mu", CommandMusic{})
+	gob.RegisterName("At", CommandAttack{})
 }
