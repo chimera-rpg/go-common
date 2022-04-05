@@ -331,18 +331,8 @@ const (
 	Northwest
 	Southeast
 	Southwest
-	RunNorth
-	RunSouth
-	RunEast
-	RunWest
-	RunNortheast
-	RunNorthwest
-	RunSoutheast
-	RunSouthwest
 	Up
 	Down
-	RunUp
-	RunDown
 	Brace
 	Drop
 	Quit
