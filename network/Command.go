@@ -312,8 +312,7 @@ type CommandInspectPayloadCharacter struct {
 
 // CommandCmd is used for player commands to interact with the game world.
 type CommandCmd struct {
-	Cmd int
-	//Args []string
+	Cmd  int
 	Data interface{}
 }
 
@@ -364,7 +363,7 @@ func (c CommandExtCmd) GetType() uint32 {
 type CommandRepeatCmd struct {
 	Cmd    int
 	Cancel bool // If the action should be canceled (used for canceling the repeat)
-	Args   []string
+	Data   interface{}
 }
 
 // GetType returns TypeRepeatCmd
