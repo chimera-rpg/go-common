@@ -312,8 +312,9 @@ type CommandInspectPayloadCharacter struct {
 
 // CommandCmd is used for player commands to interact with the game world.
 type CommandCmd struct {
-	Cmd  int
-	Args []string
+	Cmd int
+	//Args []string
+	Data interface{}
 }
 
 // GetType returns TypeCmd
@@ -335,6 +336,7 @@ const (
 	Down
 	Brace
 	Drop
+	Attack
 	Quit
 	Wizard
 )
