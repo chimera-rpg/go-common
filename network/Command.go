@@ -484,6 +484,26 @@ func (c CommandDamage) GetType() uint32 {
 	return TypeDamage
 }
 
+// CommandInteract
+type CommandInteract struct {
+	Target uint32 // Target Object ID to target.
+	Type   int
+}
+
+// GetType returns TypeInteract
+func (c CommandInteract) GetType() uint32 {
+	return TypeInteract
+}
+
+const (
+	InspectInteraction = iota
+	PickupInteraction
+	DropInteraction
+	EquipInteraction
+	UnequipInteraction
+	ActivateInteraction
+)
+
 // A list of all our command types.
 const (
 	TypeBasic = iota
@@ -507,6 +527,7 @@ const (
 	TypeStamina
 	TypeAttack
 	TypeDamage
+	TypeInteract
 	// Graphics-related
 	TypeGraphics
 	TypeAnimation
