@@ -466,6 +466,24 @@ type CommandAttack struct {
 	Target    uint32 // Object ID to target.
 }
 
+// GetType returns TypeAttack
+func (c CommandAttack) GetType() uint32 {
+	return TypeAttack
+}
+
+// CommandDamage is used to send the results of damage.
+type CommandDamage struct {
+	Target          uint32 // Object ID to target.
+	Type            data.AttackType
+	StyleDamage     map[data.AttackStyle]float64
+	AttributeDamage float64 // FIXME: This needs to be a map[AttributeId]float64
+}
+
+// GetType returns TypeDamage
+func (c CommandDamage) GetType() uint32 {
+	return TypeDamage
+}
+
 // A list of all our command types.
 const (
 	TypeBasic = iota
@@ -487,6 +505,8 @@ const (
 	TypeMessage
 	TypeViewport
 	TypeStamina
+	TypeAttack
+	TypeDamage
 	// Graphics-related
 	TypeGraphics
 	TypeAnimation
