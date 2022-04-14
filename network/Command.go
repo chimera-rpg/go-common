@@ -237,6 +237,18 @@ func (c CommandTile) GetType() uint32 {
 	return TypeTileUpdate
 }
 
+// CommandTileLight is the brightness and color value of a given tile.
+type CommandTileLight struct {
+	X, Y, Z    uint32
+	Brightness float32 // 0 is normal, 1 is bright, -1 is dark
+	R, G, B    uint8
+}
+
+// GetType returns TypeTileLight
+func (c CommandTileLight) GetType() uint32 {
+	return TypeTileLight
+}
+
 // CommandObject is the command type used to create, delete, and update objects.
 type CommandObject struct {
 	ObjectID uint32 // id of target object
@@ -513,6 +525,7 @@ const (
 	TypeCharacter
 	TypeData
 	TypeTileUpdate
+	TypeTileLight
 	TypeObjectUpdate
 	TypeInventoryUpdate
 	TypeInspect
