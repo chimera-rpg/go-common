@@ -29,7 +29,9 @@ var AttackTypeToStringMap = map[AttackType]string{
 }
 
 // AttackTypes is a map of AttackTypes to floats.
-type AttackTypes map[AttackType]map[AttackStyle]float64
+type AttackTypes map[AttackType]AttackStyles
+
+type AttackStyles map[AttackStyle]float64
 
 // UnmarshalYAML unmarshals, converting attack type strings into AttackTypes.
 func (a *AttackTypes) UnmarshalYAML(unmarshal func(interface{}) error) error {
