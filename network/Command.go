@@ -82,6 +82,15 @@ const (
 	Delete
 )
 
+// CommandRejoin signifies the client is rejoining a loaded character.
+type CommandRejoin struct {
+}
+
+// GetType returns TypeRejoin
+func (c CommandRejoin) GetType() uint32 {
+	return TypeRejoin
+}
+
 // CommandCharacter is the command involved in resolving:
 //	  * Species, Culture, Training availability
 //			* Image, AbilityScores, Skills, Description
@@ -522,6 +531,7 @@ const (
 	TypeHandshake
 	TypeFeatures
 	TypeLogin
+	TypeRejoin
 	TypeCharacter
 	TypeData
 	TypeTileUpdate

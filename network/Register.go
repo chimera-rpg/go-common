@@ -11,6 +11,7 @@ func RegisterCommands() {
 	gob.RegisterName("B", CommandBasic{})
 	gob.RegisterName("M", CommandMap{})
 	gob.RegisterName("L", CommandLogin{})
+	gob.RegisterName("R", CommandRejoin{})
 	gob.RegisterName("C", CommandCharacter{})
 	gob.RegisterName("A", CommandAnimation{})
 	gob.RegisterName("G", CommandGraphics{})
