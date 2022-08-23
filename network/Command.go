@@ -92,10 +92,10 @@ func (c CommandRejoin) GetType() uint32 {
 }
 
 // CommandCharacter is the command involved in resolving:
-//	  * Species, Culture, Training availability
-//			* Image, AbilityScores, Skills, Description
-//		* Querying, selection, creation, and deletion of Player Character(s)
-//			* Species, Culture, Training, Character, Image, Description, AbilityScores, Skills
+//   - Species, Culture, Training availability
+//   - Image, AbilityScores, Skills, Description
+//   - Querying, selection, creation, and deletion of Player Character(s)
+//   - Species, Culture, Training, Character, Image, Description, AbilityScores, Skills
 type CommandCharacter struct {
 	Type          uint8
 	Genera        []string // Genera used for query (humanoids, etc.)
@@ -292,8 +292,9 @@ type CommandObjectPayloadAnimate struct {
 	FaceID      uint32 //
 }
 
-// CommandObjectPayloadViewTarget is the type used for marking a given object as the client's view target.
+// CommandObjectPayloadViewTarget is the type used for marking a given object as the client's view target. It additionally sends the view range of the given object.
 type CommandObjectPayloadViewTarget struct {
+	Height, Width, Depth uint8
 }
 
 // Our Object types (unused)
