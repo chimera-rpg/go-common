@@ -37,7 +37,7 @@ func RegisterCommands() {
 	gob.RegisterName("Ii", data.ObjectInfoInventory{})
 	gob.RegisterName("Iw", data.ObjectInfoWeapon{})
 	gob.RegisterName("Ia", data.ObjectInfoArmor{})
-	gob.RegisterName("Ib", data.ObjectInfoBlock{})
+	gob.RegisterName("It", data.ObjectInfoBlock{})
 	gob.RegisterName("Vp", CommandViewport{})
 	gob.RegisterName("S", CommandSound{})
 	gob.RegisterName("a", CommandAudio{})
