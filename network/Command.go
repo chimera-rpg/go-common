@@ -292,6 +292,11 @@ type CommandObjectPayloadAnimate struct {
 	FaceID      uint32 //
 }
 
+// CommandObjectPayloadInfo is the type used for updating an object's information.
+type CommandObjectPayloadInfo struct {
+	Info data.ObjectInfo
+}
+
 // CommandObjectPayloadViewTarget is the type used for marking a given object as the client's view target. It additionally sends the view range of the given object.
 type CommandObjectPayloadViewTarget struct {
 	Height, Width, Depth uint8
@@ -305,19 +310,14 @@ const (
 	ObjectViewTarget        // used to target the object as the client's view.
 )
 
-// CommandInspect is used to inspect objects, characters, inventory, and similar. Results is populated by the server and sent to the client.
+// CommandInspect is used to request an inspect of an object. This will cause a CommandObject with an info payload to be sent if valid.
 type CommandInspect struct {
 	ObjectID uint32
-	Results  []CommandInspectObjectInfo
 }
 
 // GetType returns TypeInspect
 func (c CommandInspect) GetType() uint32 {
 	return TypeInspect
-}
-
-// CommandInspectPayload is our interface for inspection types. See ObjectInfo, as that is what is used here..
-type CommandInspectObjectInfo interface {
 }
 
 // CommandCmd is used for player commands to interact with the game world.
