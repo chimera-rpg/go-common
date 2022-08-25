@@ -2,6 +2,8 @@ package network
 
 import (
 	"encoding/gob"
+
+	"github.com/chimera-rpg/go-common/data"
 )
 
 // RegisterCommands registers our various Command structures with their gob names.
@@ -30,8 +32,12 @@ func RegisterCommands() {
 	gob.RegisterName("s", CommandStatus{})
 	gob.RegisterName("t", CommandStamina{})
 	gob.RegisterName("I", CommandInspect{})
-	gob.RegisterName("Ii", CommandInspectPayloadInventory{})
-	gob.RegisterName("Ic", CommandInspectPayloadCharacter{})
+	gob.RegisterName("Ib", data.ObjectInfoBasic{})
+	gob.RegisterName("Iq", data.ObjectInfoQuantity{})
+	gob.RegisterName("Ii", data.ObjectInfoInventory{})
+	gob.RegisterName("Iw", data.ObjectInfoWeapon{})
+	gob.RegisterName("Ia", data.ObjectInfoArmor{})
+	gob.RegisterName("Ib", data.ObjectInfoBlock{})
 	gob.RegisterName("Vp", CommandViewport{})
 	gob.RegisterName("S", CommandSound{})
 	gob.RegisterName("a", CommandAudio{})

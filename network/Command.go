@@ -305,9 +305,10 @@ const (
 	ObjectViewTarget        // used to target the object as the client's view.
 )
 
-// CommandInspect is used to inspect objects, characters, inventory, and similar.
+// CommandInspect is used to inspect objects, characters, inventory, and similar. Results is populated by the server and sent to the client.
 type CommandInspect struct {
-	updates []CommandInspectPayload
+	ObjectID uint32
+	Results  []CommandInspectObjectInfo
 }
 
 // GetType returns TypeInspect
@@ -315,21 +316,8 @@ func (c CommandInspect) GetType() uint32 {
 	return TypeInspect
 }
 
-// CommandInspectPayload is our interface for inspection types.
-type CommandInspectPayload interface {
-}
-
-// CommandInspectPayloadInventory is used to inspect the player's own inventory.
-type CommandInspectPayloadInventory struct {
-	ObjectID uint32
-	Name     string
-	Equipped bool
-}
-
-// CommandInspectPayloadCharacter is used to inspect a character.
-type CommandInspectPayloadCharacter struct {
-	ObjectID uint32
-	Name     string
+// CommandInspectPayload is our interface for inspection types. See ObjectInfo, as that is what is used here..
+type CommandInspectObjectInfo interface {
 }
 
 // CommandCmd is used for player commands to interact with the game world.
