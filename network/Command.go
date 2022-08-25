@@ -294,7 +294,7 @@ type CommandObjectPayloadAnimate struct {
 
 // CommandObjectPayloadInfo is the type used for updating an object's information.
 type CommandObjectPayloadInfo struct {
-	Info data.ObjectInfo
+	Info []data.ObjectInfo
 }
 
 // CommandObjectPayloadViewTarget is the type used for marking a given object as the client's view target. It additionally sends the view range of the given object.
