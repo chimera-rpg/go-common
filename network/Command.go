@@ -279,6 +279,7 @@ type CommandObjectPayloadCreate struct {
 	AnimationID          uint32
 	FaceID               uint32
 	Height, Width, Depth uint8
+	Reach                uint8 // Reach is really only used by the player's object.
 	Opaque               bool
 }
 
@@ -297,7 +298,7 @@ type CommandObjectPayloadInfo struct {
 	Info []data.ObjectInfo
 }
 
-// CommandObjectPayloadViewTarget is the type used for marking a given object as the client's view target. It additionally sends the view range of the given object.
+// CommandObjectPayloadViewTarget is the type used for marking a given object as the client's view target. It additionally sends the view range and reach of the given object.
 type CommandObjectPayloadViewTarget struct {
 	Height, Width, Depth uint8
 }
