@@ -3,6 +3,7 @@ package data
 // ObjectInfo represents information about an object. Note that these fields are only sent if they are non-zero value, so this is efficient.
 type ObjectInfo struct {
 	Source   string
+	Near     bool
 	Name     string
 	Quality  string
 	Weight   float64
