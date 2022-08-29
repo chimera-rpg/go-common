@@ -250,7 +250,7 @@ func (c CommandTile) GetType() uint32 {
 type CommandTileLight struct {
 	X, Y, Z    uint32
 	Brightness float32 // 0 is normal, 1 is bright, -1 is dark
-	R, G, B    uint8
+	Hue        float64
 }
 
 // GetType returns TypeTileLight
