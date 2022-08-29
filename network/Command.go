@@ -222,12 +222,17 @@ const (
 
 // CommandMap is a basic command for creating a map of a given name and ID at provided dimensions.
 type CommandMap struct {
-	Type   uint8 // TRAVEL
-	MapID  uint32
-	Name   string // target map name
-	Height int
-	Width  int
-	Depth  int
+	Type              uint8 // TRAVEL
+	MapID             uint32
+	Name              string // target map name
+	Height            int
+	Width             int
+	Depth             int
+	Outdoor           bool
+	OutdoorBrightness float64
+	AmbientHue        float64
+	AmbientBrightness float64
+	Hue               float32
 }
 
 // GetType returns TypeMap
@@ -256,6 +261,17 @@ type CommandTileLight struct {
 // GetType returns TypeTileLight
 func (c CommandTileLight) GetType() uint32 {
 	return TypeTileLight
+}
+
+// CommandTileSky is the sky value of a given tile.
+type CommandTileSky struct {
+	X, Y, Z uint32
+	Sky     float64
+}
+
+// GetType returns TypeTileSky
+func (c CommandTileSky) GetType() uint32 {
+	return TypeTileSky
 }
 
 // CommandObject is the command type used to create, delete, and update objects.
@@ -526,6 +542,7 @@ const (
 	TypeData
 	TypeTileUpdate
 	TypeTileLight
+	TypeTileSky
 	TypeObjectUpdate
 	TypeInventoryUpdate
 	TypeInspect

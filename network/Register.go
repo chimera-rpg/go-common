@@ -17,6 +17,7 @@ func RegisterCommands() {
 	gob.RegisterName("G", CommandGraphics{})
 	gob.RegisterName("T", CommandTile{})
 	gob.RegisterName("Tl", CommandTileLight{})
+	gob.RegisterName("Ts", CommandTileSky{})
 	gob.RegisterName("O", CommandObject{})
 	gob.RegisterName("Oc", CommandObjectPayloadCreate{})
 	gob.RegisterName("Od", CommandObjectPayloadDelete{})
