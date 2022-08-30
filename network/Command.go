@@ -240,6 +240,18 @@ func (c CommandMap) GetType() uint32 {
 	return TypeMap
 }
 
+// CommandTiles is a batch update of all tile updates.
+type CommandTiles struct {
+	TileUpdates  []CommandTile
+	LightUpdates []CommandTileLight
+	SkyUpdates   []CommandTileSky
+}
+
+// GetType returns TypeTiles
+func (c CommandTiles) GetType() uint32 {
+	return TypeTiles
+}
+
 // CommandTile is a list of tiles at a given Tile. This might be expanded to also have a brightness/visibility value.
 type CommandTile struct {
 	X, Y, Z   uint32
@@ -540,6 +552,7 @@ const (
 	TypeRejoin
 	TypeCharacter
 	TypeData
+	TypeTiles
 	TypeTileUpdate
 	TypeTileLight
 	TypeTileSky
