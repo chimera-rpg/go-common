@@ -266,7 +266,7 @@ func (c CommandTile) GetType() uint32 {
 // CommandTileLight is the brightness and color value of a given tile.
 type CommandTileLight struct {
 	X, Y, Z uint32
-	R, G, B float64
+	R, G, B uint8
 }
 
 // GetType returns TypeTileLight
