@@ -222,17 +222,15 @@ const (
 
 // CommandMap is a basic command for creating a map of a given name and ID at provided dimensions.
 type CommandMap struct {
-	Type              uint8 // TRAVEL
-	MapID             uint32
-	Name              string // target map name
-	Height            int
-	Width             int
-	Depth             int
-	Outdoor           bool
-	OutdoorBrightness float64
-	AmbientHue        float64
-	AmbientBrightness float64
-	Hue               float32
+	Type                                  uint8 // TRAVEL
+	MapID                                 uint32
+	Name                                  string // target map name
+	Height                                int
+	Width                                 int
+	Depth                                 int
+	Outdoor                               bool
+	OutdoorRed, OutdoorGreen, OutdoorBlue uint8
+	AmbientRed, AmbientGreen, AmbientBlue uint8
 }
 
 // GetType returns TypeMap
