@@ -25,7 +25,10 @@ type ObjectInfo struct {
 type ObjectInfoSlots struct {
 	Has   []uint32
 	Uses  []uint32
-	Needs []uint32
+	Needs struct {
+		Min []uint32
+		Max []uint32
+	}
 	Gives []uint32
 }
 
