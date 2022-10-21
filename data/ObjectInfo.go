@@ -14,12 +14,19 @@ type ObjectInfo struct {
 	Lore      string
 	Value     float64
 	Reach     int
-	Slots     []uint32
+	Slots     ObjectInfoSlots
 	TypeHints []uint32
 	// Armor float64 // should this just be Value?
 	//AttackTypes *AttackTypes
 	//DamageTypes *DamageTypes
 	// Spell ???
+}
+
+type ObjectInfoSlots struct {
+	Has   []uint32
+	Uses  []uint32
+	Needs []uint32
+	Gives []uint32
 }
 
 /*type DamageTypes struct {
