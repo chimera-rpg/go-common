@@ -43,6 +43,8 @@ const (
 // CommandFeatures handles the communication of the features of the server, such as animations sizes, to the client.
 type CommandFeatures struct {
 	AnimationsConfig data.AnimationsConfig
+	TypeHints        map[uint32]string
+	Slots            map[uint32]string
 }
 
 // GetType returns TypeFeatures
