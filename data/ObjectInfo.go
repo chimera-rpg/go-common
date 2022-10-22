@@ -23,13 +23,13 @@ type ObjectInfo struct {
 }
 
 type ObjectInfoSlots struct {
-	Has   []uint32
-	Uses  []uint32
+	Has   map[uint32]int
+	Uses  map[uint32]int
 	Needs struct {
-		Min []uint32
-		Max []uint32
+		Min map[uint32]int
+		Max map[uint32]int
 	}
-	Gives []uint32
+	Gives map[uint32]int
 }
 
 /*type DamageTypes struct {
