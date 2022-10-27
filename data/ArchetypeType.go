@@ -30,12 +30,8 @@ const (
 	ArchetypeGeneric
 	// ArchetypeSkill represents a Skill Archetype.
 	ArchetypeSkill
-	// ArchetypeArmor represents a Weapon Archetype.
-	ArchetypeArmor
-	// ArchetypeShield represents a Shield Archetype.
-	ArchetypeShield
-	// ArchetypeWeapon represents an Armor Archetype.
-	ArchetypeWeapon
+	// ArchetypeEquippable represents a weapons, shields, armor, magic items, and more.
+	ArchetypeEquippable
 	// ArchetypeFood represents a tasty morsel.
 	ArchetypeFood
 	// ArchetypeAudio represents a special archetype for sound and music playback.
@@ -50,50 +46,46 @@ const (
 
 // ArchetypeToStringMap maps ArchetypeTypes to string representations
 var ArchetypeToStringMap = map[ArchetypeType]string{
-	ArchetypeUnknown: "Unknown",
-	ArchetypeGenus:   "Genus",
-	ArchetypeSpecies: "Species",
-	ArchetypeFaction: "Faction",
-	ArchetypePC:      "PC",
-	ArchetypeNPC:     "NPC",
-	ArchetypeTile:    "Tile",
-	ArchetypeBlock:   "Block",
-	ArchetypeItem:    "Item",
-	ArchetypeBullet:  "Bullet",
-	ArchetypeGeneric: "Generic",
-	ArchetypeSkill:   "Skill",
-	ArchetypeArmor:   "Armor",
-	ArchetypeShield:  "Shield",
-	ArchetypeWeapon:  "Weapon",
-	ArchetypeFood:    "Food",
-	ArchetypeAudio:   "Audio",
-	ArchetypeFlora:   "Flora",
-	ArchetypeExit:    "Exit",
-	ArchetypeSpecial: "Special",
+	ArchetypeUnknown:    "Unknown",
+	ArchetypeGenus:      "Genus",
+	ArchetypeSpecies:    "Species",
+	ArchetypeFaction:    "Faction",
+	ArchetypePC:         "PC",
+	ArchetypeNPC:        "NPC",
+	ArchetypeTile:       "Tile",
+	ArchetypeBlock:      "Block",
+	ArchetypeItem:       "Item",
+	ArchetypeBullet:     "Bullet",
+	ArchetypeGeneric:    "Generic",
+	ArchetypeSkill:      "Skill",
+	ArchetypeEquippable: "Equippable",
+	ArchetypeFood:       "Food",
+	ArchetypeAudio:      "Audio",
+	ArchetypeFlora:      "Flora",
+	ArchetypeExit:       "Exit",
+	ArchetypeSpecial:    "Special",
 }
 
 // StringToArchetypeMap maps string representations to ArchetypeTypes.
 var StringToArchetypeMap = map[string]ArchetypeType{
-	"Unknown": ArchetypeUnknown,
-	"Genus":   ArchetypeGenus,
-	"Species": ArchetypeSpecies,
-	"Faction": ArchetypeFaction,
-	"PC":      ArchetypePC,
-	"NPC":     ArchetypeNPC,
-	"Tile":    ArchetypeTile,
-	"Block":   ArchetypeBlock,
-	"Item":    ArchetypeItem,
-	"Bullet":  ArchetypeBullet,
-	"Generic": ArchetypeGeneric,
-	"Skill":   ArchetypeSkill,
-	"Armor":   ArchetypeArmor,
-	"Shield":  ArchetypeShield,
-	"Weapon":  ArchetypeWeapon,
-	"Food":    ArchetypeFood,
-	"Audio":   ArchetypeAudio,
-	"Flora":   ArchetypeFlora,
-	"Exit":    ArchetypeExit,
-	"Special": ArchetypeSpecial,
+	"Unknown":    ArchetypeUnknown,
+	"Genus":      ArchetypeGenus,
+	"Species":    ArchetypeSpecies,
+	"Faction":    ArchetypeFaction,
+	"PC":         ArchetypePC,
+	"NPC":        ArchetypeNPC,
+	"Tile":       ArchetypeTile,
+	"Block":      ArchetypeBlock,
+	"Item":       ArchetypeItem,
+	"Bullet":     ArchetypeBullet,
+	"Generic":    ArchetypeGeneric,
+	"Skill":      ArchetypeSkill,
+	"Equippable": ArchetypeEquippable,
+	"Food":       ArchetypeFood,
+	"Audio":      ArchetypeAudio,
+	"Flora":      ArchetypeFlora,
+	"Exit":       ArchetypeExit,
+	"Special":    ArchetypeSpecial,
 }
 
 // AsUint8 returns ArchetypeType as a uint8.
